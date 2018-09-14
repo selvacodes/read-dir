@@ -13,13 +13,15 @@ const fileStatWithPath = file =>
 const readDirWithFileName = path =>
   readDir(path).then(files => files.map(file => `${basename(path)}/${file}`));
 
+const withBasename = file => basename(file);
+
 const resolve2 = path1 => path2 => resolve(path1, path2);
 
 Array.prototype.flatMap = function(fn) {
   return Array.prototype.concat.apply([], this.map(fn));
 };
 
-async function main() {
+async function getFileList() {
   const dirToRead = ".";
   const pathWithRootDir = resolve2(dirToRead);
 
@@ -37,11 +39,11 @@ async function main() {
   const justFiles = fileList
     .filter(x => !x.isDir)
     .map(pick("file"))
-    .map(file => basename(file));
+    .map(withBasename);
 
   return [...justFiles, ...folderFiles];
 }
 
-main().then(files =>
+getFileList().then(files =>
   files.forEach((item, index) => console.log(`${index}.${item}`))
 );
