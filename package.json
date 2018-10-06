@@ -4,10 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "commitizen": "^3.0.2",
+    "cz-conventional-changelog": "^2.1.0",
     "prettier": "^1.14.2"
   },
   "dependencies": {
-    "crocks": "^0.10.1",
-    "ramda": "^0.25.0"
+    "crocks": "^0.10.1"
+  },
+  "scripts": {
+    "cz": "git cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

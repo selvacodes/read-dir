@@ -74,6 +74,7 @@ const getFileList = compose(
 );
 
 // Impure Part
+
 //displayFileWithIndex:: [Files]  -> ()
 const displayFileWithIndex = files =>
   files.forEach((item, index) => console.log(`${index}.${item}`));
